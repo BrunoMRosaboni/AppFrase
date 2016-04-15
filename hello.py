@@ -7,7 +7,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1>Hello World</hi>"
+    return 
+    "<h1>Hello World</hi> "
+	"<input type="text" name="firstname"><br>"
+
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
