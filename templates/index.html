@@ -1,11 +1,32 @@
 <!doctype html>
-<title>REDES: Um exemplo de aplicação python na web</title>
-<h1>Bem vindo ao experimento PYTHON+FLASK+HEROKU!!</h1>
-<h2>CS QUOTES</h1>
 
-<form action="{{ url_for('hello') }}" method=post>
-Nome: 
-<input type="text" name="username">
-<input type="submit" name="submit" value="Randomizar">
-</form>
+ <head>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<title>REDES: Um exemplo de aplicação python na web</title>
+</head>	
+
+<div style="text-align: center; vertical-align: middle">
+
+	<h1>Bem-vindo ao experimento PYTHON + FLASK + HEROKU!</h1>
+	<br><br><br>
+	<h2>Computer Science Quotes</h1>
+	<br><br><br><br><br><br><br><br><br><br>
+	
+	<div class="col-md-4 col-md-offset-4">
+		<div>
+			<form action="{{ url_for('hello') }}" method=post class="form-inline">
+				<div class="form-group">					
+					<label for="inputnome">Nome</label>			
+				</div>
+				<div class="form-group">					
+					<input class="form-control" id="inputnome" type="text" name="username" required/>
+				</div>
+				<div class="form-group">	
+					<input type="submit" name="submit" class="btn btn-default" value="Randomizar"/>
+				</div>				
+			</form>
+		</div>
+	</div>	
+</div>
+
 
