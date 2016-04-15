@@ -6,20 +6,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1>Hello World</hi>"
-
-@app.route('/vicks')
-def vicks():
-    return 'vicks page!'
+	return render_template('index.html')
 
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', name=name)
-
-@app.context_processor
-def example():
-    return dict(myexample='This is an bla')
 
 @app.context_processor
 def gerador():
