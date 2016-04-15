@@ -1,4 +1,11 @@
 <!doctype html>
 <title>REDES: Um exemplo de aplicação python na web</title>
-<h1>Bem vindo!!</h1>
+<h1>Bem vindo ao experimento PYTHON+FLASK+HEROKU!!</h1>
+<h2>CS QUOTES</h1>
+
+<form action="{{ url_for('hello') }}" method=post>
+Nome: 
+<input type="text" name="username">
+<input type="submit" name="submit" value="Randomizar">
+</form>
 

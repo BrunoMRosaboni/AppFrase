@@ -1,5 +1,5 @@
 import os, random
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -8,10 +8,10 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-@app.route('/hello/')
-@app.route('/hello/<name>')
+@app.route('/hello/',methods=['POST'])
 def hello(name=None):
-    return render_template('hello.html', name=name)
+    user = request.form.get('username')
+    return render_template('hello.html', name=user)
 
 @app.context_processor
 def gerador():
