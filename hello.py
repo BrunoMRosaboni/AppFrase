@@ -19,7 +19,7 @@ def hello(name=None):
 
 @app.context_processor
 def example():
-    return dict(myexample='This is an example')
+    return dict(myexample='This is an bla')
 
 @app.context_processor
 def gerador():
