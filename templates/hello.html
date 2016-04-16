@@ -4,9 +4,12 @@
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<title>Gerador</title>
-{% if name %}
-  <h1>Olá {{ name }}!</h1>
-  <h3>{{ vicks }} <h3>
-{% endif %}
-
+<body>
+	<div style="text-align:center; vertical-align:middle">
+		<title>Gerador</title>
+		{% if quote %}
+		  <h1>Olá {{ name }}!</h1>
+		  <h3>{{ quote }} </h3>
+			{% endif %}
+	</div>
+</body>

@@ -1,4 +1,4 @@
-import os, random
+import json, os, random, requests, sys
 from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
@@ -8,27 +8,33 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
+@app.route('/random/')
+def proxy_example():
+    r = requests.get("http://quotes.stormconsultancy.co.uk/random.json").content
+    # sys.stderr.write("jd:" + str(r))
+    r_dict = json.loads(r)    
+    
+    quote = r_dict['quote']
+    author = r_dict['author']
+
+    return render_template('random.html')
+
 @app.route('/hello/',methods=['POST'])
-def hello(name=None):
+def hello(name=None):	
     user = request.form.get('username')
-    return render_template('hello.html', name=user)
+    return render_template('hello.html', name=user)    
 
-@app.route("/random")
-def random():
-	return render_template('random.html')
-
-	
 @app.context_processor
-def gerador():
-    foo = ['If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra',
-    'One of my most productive days was throwing away 1000 lines of code - Ken Thompson', 
-    'Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler', 
-    'When debugging, novices insert corrective code; experts remove defective code. - Richard Pattis', 
-    'Programming is like sex. One mistake and you have to support it for the rest of your life. - Michael Sinz'
-    ]
-    return dict(vicks=random.choice(foo))
+def gerador():    
+    r = requests.get("http://quotes.stormconsultancy.co.uk/random.json").content
+    # sys.stderr.write("jd:" + str(r))
+    r_dict = json.loads(r)    
+    
+    quote = r_dict['quote']
+    author = r_dict['author']
+    return dict(quote=quote+" -"+author)
 
 
 if __name__ == "__main__":
 	port = int(os.environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
+	app.run(host='0.0.0.0', port=port, debug=True)
