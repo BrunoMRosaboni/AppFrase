@@ -13,6 +13,11 @@ def hello(name=None):
     user = request.form.get('username')
     return render_template('hello.html', name=user)
 
+@app.route("/random")
+def random():
+	return render_template('random.html')
+
+	
 @app.context_processor
 def gerador():
     foo = ['If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra',
